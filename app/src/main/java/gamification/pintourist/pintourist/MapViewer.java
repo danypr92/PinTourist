@@ -60,4 +60,8 @@ public class MapViewer {
     public void addMarker(MarkerOptions newMarker){
         mMap.addMarker(newMarker);
     }
+
+
+
+    public GoogleMap getmMap(){return this.mMap;}
 }

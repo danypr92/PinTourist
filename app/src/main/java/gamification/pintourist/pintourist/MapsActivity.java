@@ -84,4 +84,6 @@ public class MapsActivity extends ActionBarActivity {
     public static Pin getPinTarget(){
         return mPinTarget;
     }
+
+    public static MapViewer getmMapViewer() {return mMapViewer;}
 }
