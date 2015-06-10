@@ -6,6 +6,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolygonOptions;
 
+import java.util.ArrayList;
+
 /**
  * Created by Daniel on 04/06/2015.
  */
@@ -15,11 +17,11 @@ public class Zona {
     private LatLng[] angles_of_perimeter;
     private int zone_Color;
 
-    public Zona(int id,Pin[] pins_CurrentZone, LatLng[] angles_of_perimeter) {
+    public Zona(int id,Pin[] pins_CurrentZone,LatLng[] angles_of_perimeter) {
         this.id=id;
         this.pins_CurrentZone=pins_CurrentZone;
         this.angles_of_perimeter=angles_of_perimeter;
-        this.zone_Color=0xFFFFFFFF;
+        this.zone_Color=0x96969655;
     }
 
     public Zona(int id,Pin[] pins_CurrentZone, LatLng[] angles_of_perimeter,int zone_Color) {
@@ -44,5 +46,6 @@ public class Zona {
         PolygonOptions polygonOptions=new PolygonOptions().add(this.angles_of_perimeter);
         polygonOptions.fillColor(this.zone_Color);
         map.addPolygon(polygonOptions);
+
     }
 }

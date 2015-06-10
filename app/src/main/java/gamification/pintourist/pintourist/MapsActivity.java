@@ -34,6 +34,8 @@ public class MapsActivity extends ActionBarActivity {
 
     //Lista de zone
     private List<Zona> mZone;
+    //Zona di test
+    private Zona mZonaColosseo;
     //Pin Obiettivo
     private static Pin mPinTarget;
 
@@ -56,12 +58,27 @@ public class MapsActivity extends ActionBarActivity {
         //Colosseo --> 41.891232, 12.492266
         mMapViewer = new MapViewer();
         mAvatar = new Avatar();
+
+        //esempio zona vicino Colosseo
+                  double k= 0.000500;
+        double LatColosseo=41.891232;
+        double LngColosseo=12.492266;
+        LatLng[] VerticiZonaColosseo= {
+                new LatLng(LatColosseo - k, LngColosseo - k),
+                new LatLng(LatColosseo - k, LngColosseo + k),
+                new LatLng(LatColosseo + k, LngColosseo + k),
+                new LatLng(LatColosseo + k, LngColosseo - k)
+        };
+        mZonaColosseo=new Zona(0,null,VerticiZonaColosseo);
+
         //mMarkers = mParser.parse();
         //setUpMapIfNeeded();
         mMapViewer.setUpMapIfNeeded();
         mMapViewer.addMarker(mAvatar.getMarker());
         mMapViewer.moveCameraTo(mAvatar.getLatLng(), 30);
 
+
+        mZonaColosseo.draw();
     }
 
     @Override
