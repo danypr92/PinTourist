@@ -9,9 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MapsActivity">
+        <include layout="@layout/toolbar"
+            android:id="@+id/toolbar">
+
+        </include>
         <fragment
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
             android:id="@+id/map"
             tools:context=".MapsActivity"
             android:name="com.google.android.gms.maps.SupportMapFragment" />
