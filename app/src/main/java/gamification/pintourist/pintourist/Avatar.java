@@ -6,6 +6,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 /**
  * Created by Daniel on 04/06/2015.
  */
+
 public class Avatar {
 
     private static MarkerOptions mMarker;
@@ -17,6 +18,7 @@ public class Avatar {
                 //.icon(R.drawable.uomino)
                 .title("My Position")
                 .snippet("My Position");
+
     }
 
     public MarkerOptions getMarker(){

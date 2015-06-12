@@ -48,5 +48,4 @@ public class SplashScreenActivity extends Activity {
         Timer timer = new Timer();
         timer.schedule(task, SPLASH_SCREEN_DELAY);
     }
-
 }
