@@ -45,15 +45,7 @@ public class Pin {
     //setting the snippet as the name of the monument after the user's answered the question
     public void setName (){
         if(this.isConquistato())
-            this.pinMarker.snippet(this.getNome());
-        else throw new eccezionePinConquistato("You have not won the challange yet. Why don't you try?! ;)");
-    }
-
-    public class eccezionePinConquistato extends RuntimeException{
-
-        public eccezionePinConquistato(String msg){
-            super(msg);
-        }
+            this.pinMarker.title(this.getNome());
     }
 
     private static int generatoreRandom(){
