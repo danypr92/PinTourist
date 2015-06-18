@@ -31,7 +31,7 @@ public class Sfida {
     }
 
 
-    private static class domandePieneException extends RuntimeException{
+    static class domandePieneException extends RuntimeException{
         public domandePieneException(String msg){
             super(msg);
         }
