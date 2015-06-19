@@ -6,5 +6,6 @@ package gamification.pintourist.pintourist;
 public class Pin {
     public Pin(){
 
+
     }
 }

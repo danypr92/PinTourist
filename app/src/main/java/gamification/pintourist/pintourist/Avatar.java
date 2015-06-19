@@ -1,5 +1,6 @@
 package gamification.pintourist.pintourist;
 
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -12,11 +13,15 @@ public class Avatar {
 
     public Avatar(){
         mMarker = new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.avatar_image)) // troppo piccola!
+                //.icon(BitmapDescriptorFactory.fromResource(R.drawable.avatar_image2)) //troppo grande!
+
                 .position(new LatLng(41.891232, 12.492266))
                 .draggable(true)
                 //.icon(R.drawable.uomino)
                 .title("My Position")
                 .snippet("My Position");
+
     }
 
     public MarkerOptions getMarker(){
