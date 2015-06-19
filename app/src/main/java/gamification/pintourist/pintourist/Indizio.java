@@ -5,16 +5,13 @@ package gamification.pintourist.pintourist;
  */
 public class Indizio {
 
-    String [] indizi;
+    private String [] indizi;
 
-    public Indizio(){
+    public Indizio(String [] arrayIndizi){
         indizi = new String [3];
     }
 
-    public void setIndizi(String [] arrayIndizi){
-        this.indizi = arrayIndizi;
+    public String getIndizi(int numeroIndizio) {
+        return indizi[numeroIndizio];
     }
-
-
-
 }
