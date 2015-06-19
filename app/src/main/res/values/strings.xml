@@ -3,4 +3,13 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_splash">Splash</string>
     <string name="title_activity_access">Access</string>
+    <string name="verano">Cimitero Monumentale del Verano</string>
+    <string name="minerva">Statua della Minerva</string>
+    <string-array name="indiziVerano">
+        <item>Verano1</item>
+        <item>Verano2</item>
+        <item>Verano3</item>
+    </string-array>
+
+
 </resources>

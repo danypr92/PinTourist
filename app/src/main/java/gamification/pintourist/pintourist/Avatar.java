@@ -14,7 +14,7 @@ public class Avatar {
 
     public Avatar(){
         mMarker = new MarkerOptions()
-              //  .icon(BitmapDescriptorFactory.fromResource(R.drawable.avatar_image)) // troppo piccola!
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.avatar_image)) // troppo piccola!
                 //.icon(BitmapDescriptorFactory.fromResource(R.drawable.avatar_image2)) //troppo grande!
 
                 .position(new LatLng(41.891232, 12.492266))

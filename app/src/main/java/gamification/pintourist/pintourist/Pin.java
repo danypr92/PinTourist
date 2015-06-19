@@ -16,23 +16,44 @@ import java.util.Random;
  */
 public class Pin {
 
+    public static final int NUMERO_DOMANDE = 3;
+
     private MarkerOptions pinMarker;
     public boolean conquistato;
     private String nome;
+    private Indizio [] indizi;
 
-    public Pin(String nome, double Lat, double Long){
-        pinMarker = new MarkerOptions().position(new LatLng(Lat, Long)).title("Scoprimi")
-                        .icon(BitmapDescriptorFactory.fromFile("/Macintosh HD/Users/Roberto/Desktop"));
+    public Pin(String nome, double Lat, double Long, Indizio [] lista_indizi){
+        pinMarker = new MarkerOptions().position(new LatLng(Lat, Long)).title("Scoprimi");
+        conquistato = false;
+        this.nome = nome;
+        this.indizi = lista_indizi;
+    }
+
+    // costruttore temporaneo
+    public Pin(String nome, double Lat, double Long) {
+        pinMarker = new MarkerOptions().position(new LatLng(Lat, Long)).title("Scoprimi");
         conquistato = false;
         this.nome = nome;
     }
-
     public String getNome() { return nome; }
 
     public MarkerOptions getPinMarker() { return pinMarker; }
 
     //return lat and long of the pin
     public LatLng getLatLng() { return getPinMarker().getPosition(); }
+
+    public Indizio getIndizio1(){
+        return indizi[0];
+    }
+
+    public Indizio getIndizio2(){
+        return indizi[1];
+    }
+
+    public Indizio getIndizio3(){
+        return indizi[2];
+    }
 
     public boolean isConquistato() {
         return conquistato;
@@ -50,9 +71,8 @@ public class Pin {
 
     private static int generatoreRandom(){
         Random r = new Random();
-        return r.nextInt(4);
+        return r.nextInt(NUMERO_DOMANDE);
     }
-
 
 
 }

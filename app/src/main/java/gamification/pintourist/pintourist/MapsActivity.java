@@ -104,7 +104,7 @@ public class MapsActivity extends ActionBarActivity {
         mMapViewer.moveCameraTo(mAvatar.getLatLng(), 30);
 
 
-        mZonaColosseo.draw();
+       // mZonaColosseo.draw();
         ZonaRioneMonti.draw();
     }
 
@@ -130,4 +130,6 @@ public class MapsActivity extends ActionBarActivity {
     }
 
     public static MapViewer getmMapViewer() {return mMapViewer;}
+
+
 }
