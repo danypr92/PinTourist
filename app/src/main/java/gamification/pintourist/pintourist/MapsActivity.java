@@ -36,10 +36,35 @@ public class MapsActivity extends ActionBarActivity {
     private List<Zona> mZone;
     //Zona di test
     private Zona mZonaColosseo;
+    private Zona ZonaRioneMonti;
+
+    private LatLng[] VerticiZonaRioneMonti= {
+            new LatLng(41.89534541412743, 12.483129501342773),
+            new LatLng(41.89601624960714, 12.486777305603027),
+            new LatLng(41.89895506484607, 12.487077713012695),
+            new LatLng(41.9015423880521, 12.490768432617188),
+            new LatLng(41.898380089897174, 12.496905326843262),
+            new LatLng(41.897932883580076, 12.496604919433594),
+            new LatLng (41.89668707804063, 12.498278617858887),
+            new LatLng(41.89668707804063, 12.499265670776367),
+            new LatLng(41.887135094867865, 12.5044584274292),
+            new LatLng(41.8872948387714, 12.503299713134766),
+            new LatLng(41.88889225583803, 12.49845027923584),
+            new LatLng(41.8899784766276, 12.494630813598633),
+            new LatLng(41.888956151689875, 12.49368667602539),
+            new LatLng(41.88831719029552, 12.490510940551758),
+            new LatLng(41.88489863827785, 12.489781379699707),
+            new LatLng(41.88374843011852, 12.488493919372559),
+            new LatLng(41.887806016578544, 12.481670379638672),
+            new LatLng(41.89195918463598, 12.480597496032715),
+            new LatLng(41.89349259381646, 12.482185363769531),
+            new LatLng(41.895249579912274, 12.483172416687012)
+    };
+
+
+
     //Pin Obiettivo
     private static Pin mPinTarget;
-
-
     private static Context context;
 
     @Override
@@ -71,6 +96,7 @@ public class MapsActivity extends ActionBarActivity {
         };
         mZonaColosseo=new Zona(0,null,VerticiZonaColosseo);
 
+        ZonaRioneMonti=new Zona(0,null,VerticiZonaRioneMonti);
         //mMarkers = mParser.parse();
         //setUpMapIfNeeded();
         mMapViewer.setUpMapIfNeeded();
@@ -79,6 +105,7 @@ public class MapsActivity extends ActionBarActivity {
 
 
         mZonaColosseo.draw();
+        ZonaRioneMonti.draw();
     }
 
     @Override

@@ -11,16 +11,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#FF9900">
         <ImageView
             android:id="@+id/toolbar_logo"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="20"
             android:src="@drawable/pinlogo">
         </ImageView>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="50"
             android:layout_height="match_parent"
             android:text="Suggeritore"/>
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:maxWidth="50dp"
+            android:id="@+id/imageButton"
+            android:src="@drawable/search_ideogram"
+            android:scaleType="fitCenter"
+
+            />
     </LinearLayout>
 </android.support.v7.widget.Toolbar>
