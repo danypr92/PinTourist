@@ -43,16 +43,8 @@ public class Pin {
     //return lat and long of the pin
     public LatLng getLatLng() { return getPinMarker().getPosition(); }
 
-    public Indizio getIndizio1(){
-        return indizi[0];
-    }
-
-    public Indizio getIndizio2(){
-        return indizi[1];
-    }
-
-    public Indizio getIndizio3(){
-        return indizi[2];
+    public Indizio getIndizio(int index){
+        return this.indizi[index];
     }
 
     public boolean isConquistato() {
