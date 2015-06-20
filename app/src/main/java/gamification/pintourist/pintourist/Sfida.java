@@ -17,23 +17,15 @@ public class Sfida {
         this.immagineSfida = immagine;
     }
 
-    public void setDomandeLivello1(Domanda a){
-        int i = getIndex(this.domande[0]);
-        if (i == -1) throw new domandePieneException("Già sono state inserite 3 domande di livello 1 per questo pin");
-        else this.domande[0][i] = a;
+
+
+
+    public void setDomandeLivello(int livello, Domanda a){
+        int i = getIndex(this.domande[livello]);
+        if (i == -1) throw new domandePieneException("Già sono state inserite 3 domande di livello "+livello+" per questo pin");
+        else this.domande[livello][i] = a;
     }
 
-    public void setDomandeLivello2(Domanda a){
-        int i = getIndex(this.domande[1]);
-        if (i == -1) throw new domandePieneException("Già sono state inserite 3 domande di livello 2 per questo pin");
-        else this.domande[1][i] = a;
-    }
-
-    public void setDomandeLivello3(Domanda a){
-        int i = getIndex(this.domande[2]);
-        if (i == -1) throw new domandePieneException("Già sono state inserite 3 domande di livello 3 per questo pin");
-        else this.domande[2][i] = a;
-    }
 
 
     static class domandePieneException extends RuntimeException{
@@ -43,10 +35,10 @@ public class Sfida {
     }
 
     private int getIndex(Domanda[] a){
-        int i = 0;
-        while (a[i]!= null) i++;
-        if (i == a.length -1) return -1;
-        return i;
-    }
+    int i = 0;
+    while (a[i]!= null) i++;
+    if (i == a.length -1) return -1;
+    return i;
+}
 
 }
