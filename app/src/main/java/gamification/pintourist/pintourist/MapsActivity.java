@@ -2,14 +2,20 @@ package gamification.pintourist.pintourist;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.AnimationDrawable;
 import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -22,12 +28,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import gamification.pintourist.pintourist.Utility;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class MapsActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
-
     //Avatar user
     private static Avatar mAvatar;
     private static LatLng mLocation;
@@ -42,17 +48,23 @@ public class MapsActivity extends ActionBarActivity {
     private static Context context;
 
 
-    @Override
+
+    private String[] mPlanetTitles;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Set portrait orientation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_map);
 
-
         /*
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         // Set a toolbar to replace the action bar.
         this.toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -75,6 +87,9 @@ public class MapsActivity extends ActionBarActivity {
 
         Utility.ZonaRioneMonti.draw();
         Utility.ZonaSanLorenzo.draw();
+
+
+
 
 
         startGame();
@@ -104,7 +119,10 @@ public class MapsActivity extends ActionBarActivity {
     public static MapViewer getmMapViewer() {return mMapViewer;}
 
     public void startGame(){
-        //TextView Suggeritore=findViewById();
+        TextView Suggeritore=(TextView) findViewById(R.id.suggeritore);
+        Suggeritore.setText(R.string.scegliPinPartenza);
+
+
     }
 
 }
