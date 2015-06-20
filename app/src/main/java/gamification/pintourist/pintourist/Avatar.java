@@ -16,13 +16,12 @@ public class Avatar {
         mMarker = new MarkerOptions()
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.avatar_image)) // troppo piccola!
                 //.icon(BitmapDescriptorFactory.fromResource(R.drawable.avatar_image2)) //troppo grande!
-
-                .position(new LatLng(41.891232, 12.492266))
-                .draggable(true)
                 //.icon(R.drawable.uomino)
+                //.position(new LatLng(41.891232, 12.492266))
+                .position(new LatLng(41.8990998, 12.517614))
+                .draggable(true)
                 .title("My Position")
                 .snippet("My Position");
-
     }
 
     public MarkerOptions getMarker(){

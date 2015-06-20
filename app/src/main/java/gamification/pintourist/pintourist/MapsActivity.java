@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.Window;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,7 +26,7 @@ import java.util.List;
 
 public class MapsActivity extends ActionBarActivity {
 
-    private static Toolbar toolbar;
+    private Toolbar toolbar;
 
     //Avatar user
     private static Avatar mAvatar;
@@ -38,23 +41,31 @@ public class MapsActivity extends ActionBarActivity {
     private static Pin mPinTarget;
     private static Context context;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Set portrait orientation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
         setContentView(R.layout.activity_map);
 
-        // initialising the object of the FragmentManager. Here I'm passing getSupportFragmentManager(). You can pass getFragmentManager() if you are coding for Android 3.0 or above.
+
+        /*
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // Set a toolbar to replace the action bar.
+        this.toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        */
+
+        // initialising the object of the FragmentManager. Here I'm passing getSupportFragmentManager().
+        // You can pass getFragmentManager() if you are coding for Android 3.0 or above.
         fragmentManager = getSupportFragmentManager();
 
         context = getApplicationContext();
         mMapViewer = new MapViewer();
         mAvatar = new Avatar();
-
-
 
         //mMarkers = mParser.parse();
         //setUpMapIfNeeded();
@@ -62,9 +73,11 @@ public class MapsActivity extends ActionBarActivity {
         mMapViewer.addMarker(mAvatar.getMarker());
         mMapViewer.moveCameraTo(mAvatar.getLatLng(), 30);
 
-
         Utility.ZonaRioneMonti.draw();
         Utility.ZonaSanLorenzo.draw();
+
+
+        startGame();
     }
 
     @Override
@@ -90,5 +103,8 @@ public class MapsActivity extends ActionBarActivity {
 
     public static MapViewer getmMapViewer() {return mMapViewer;}
 
+    public void startGame(){
+        //TextView Suggeritore=findViewById();
+    }
 
 }

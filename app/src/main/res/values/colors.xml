@@ -14,7 +14,8 @@
     <item name="white" type="color">#FFFFFFFF</item>
     <item name="black" type="color">#ff000000</item>
 
-    <item name="myColour" type="color">#6dff3127</item>
+    <item name="myColor" type="color">#6dff3127</item>
+    <item name="toolbarColor" type="color">#FFFF9900</item>
 
     <item name="transparentBlue" type="color">#7733B5E5</item>
     <item name="transparentPurple" type="color">#77AA66CC</item>

@@ -5,14 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/toolbar_height"
     android:minHeight="?attr/actionBarSize"
-    android:background="?attr/colorPrimary"
-    local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    local:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+    android:background="#FF9900">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:background="#FF9900">
+        >
         <ImageView
             android:id="@+id/toolbar_logo"
             android:layout_width="0dp"
@@ -21,19 +19,30 @@
             android:src="@drawable/pinlogo">
         </ImageView>
         <TextView
+            android:id="@+id/suggeritore"
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="match_parent"
-            android:text="Suggeritore"/>
+            android:text="Suggeritore"
+            />
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="30"
+            android:layout_weight="15"
             android:maxWidth="50dp"
-            android:id="@+id/imageButton"
+            android:id="@+id/bottoneIndizi"
             android:src="@drawable/search_ideogram"
             android:scaleType="fitCenter"
-
+            />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="15"
+            android:maxWidth="50dp"
+            android:id="@+id/bottoneMenuPrincipale"
+            android:src="@drawable/search_ideogram"
+            android:scaleType="fitCenter"
             />
     </LinearLayout>
+
 </android.support.v7.widget.Toolbar>

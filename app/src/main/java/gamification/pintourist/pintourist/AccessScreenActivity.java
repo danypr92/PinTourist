@@ -17,8 +17,6 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 public class AccessScreenActivity extends Activity {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,14 +30,10 @@ public class AccessScreenActivity extends Activity {
 
         setContentView(R.layout.access_screen);
         Button b= (Button) findViewById(R.id.button);
-
-
     }
-
 
     public void access(View view) {
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
-
 }
