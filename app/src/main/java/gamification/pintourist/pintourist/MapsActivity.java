@@ -30,6 +30,8 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -273,6 +275,18 @@ public class MapsActivity extends ActionBarActivity {
     public void startGame(){
         TextView Suggeritore=(TextView) findViewById(R.id.suggeritore);
         Suggeritore.setText(R.string.scegliPinPartenza);
+        //for (final Pin p: Utility.ZonaSanLorenzo.getPins_CurrentZone()){
+        mMapViewer.getmMap().setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(Marker marker) {
+                    Toast.makeText(MapsActivity.this, marker.getId() , Toast.LENGTH_LONG).show();
+                    int markerId=((int) marker.getId().toString().charAt(1))-49;
+                    (Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId].setObbiettivo();
+                    MapsActivity.mPinTarget=(Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId];
+                    mPinTarget.getPinMarker().icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+                    Toast.makeText(MapsActivity.this, "You have selected the Pin with id: "+(char)(markerId+48), Toast.LENGTH_LONG).show();
+                    return true;
+                }
+            });
+        }
     }
-
-}
