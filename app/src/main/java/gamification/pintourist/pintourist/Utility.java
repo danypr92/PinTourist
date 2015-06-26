@@ -17,6 +17,10 @@ Resources.getSystem()
  * Created by Roberto on 19/06/15.
  */
 public class Utility {
+    //Generics
+    static final String Avatartitle="Avatar";
+    static final int MIN_DSTANCE=20;
+
 
     //Pin_______________________________________________________________________________________________________________________
     static final Context context = MapsActivity.getAppContext();

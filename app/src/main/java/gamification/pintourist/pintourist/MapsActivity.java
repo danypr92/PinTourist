@@ -48,7 +48,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class MapsActivity extends ActionBarActivity {
+public class MapsActivity extends FragmentActivity {
 
     private Toolbar toolbar;
     //Avatar user
@@ -78,8 +78,7 @@ public class MapsActivity extends ActionBarActivity {
 
         // Set portrait orientation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
-
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_map);
 
 
@@ -327,6 +326,9 @@ public class MapsActivity extends ActionBarActivity {
                     (Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId].setObbiettivo();
                     MapsActivity.mPinTarget = (Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId];
                     mPinTarget.getPinMarker().icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+                    //getmMapViewer().mMap.
+                    //mMapViewer.
+                    mMapViewer.addMarker(getPinTarget().getPinMarker());
                     Toast.makeText(MapsActivity.this, "You have selected the Pin with id: " + (char) (markerId + 48), Toast.LENGTH_LONG).show();
                     gamePhase=GamePhase.PIN_DISCOVER;
                     setupPopupIndizi();
