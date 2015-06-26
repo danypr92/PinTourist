@@ -1,11 +1,13 @@
 package gamification.pintourist.pintourist;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.drawable.AnimationDrawable;
 import android.location.Location;
+import android.media.Image;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -23,6 +25,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +41,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import gamification.pintourist.pintourist.Utility;
+
+import java.nio.charset.MalformedInputException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +52,7 @@ public class MapsActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
     //Avatar user
-    private static Avatar mAvatar;
+    public static Avatar mAvatar;
     private static LatLng mLocation;
 
     //Map Viewer & gestire fragment della mappa
@@ -57,6 +63,7 @@ public class MapsActivity extends ActionBarActivity {
     //Pin Obiettivo
     private static Pin mPinTarget;
     private static Context context;
+    public static GamePhase gamePhase=GamePhase.PIN_CHOICE;
 
 
 
@@ -64,7 +71,7 @@ public class MapsActivity extends ActionBarActivity {
     private DrawerLayout mDrawer;
     private CustomActionBarDrawerToggle mDrawerToggle;
     private String[] menuItems;
-
+    public static Dialog dialogIndizi;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,7 +123,40 @@ public class MapsActivity extends ActionBarActivity {
         Utility.ZonaSanLorenzo.draw();
 
 
+        ImageButton bottoneIndizi=(ImageButton) findViewById(R.id.bottoneIndizi);
+        bottoneIndizi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inizializzo la mia dialog
+                MapsActivity.dialogIndizi = new Dialog(MapsActivity.this);
 
+                // Evito la presenza della barra del titolo nella mia dialog
+                MapsActivity.dialogIndizi.getWindow();
+                MapsActivity.dialogIndizi.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+                // Carico il layout della dialog al suo intenro
+                MapsActivity.dialogIndizi.setContentView(R.layout.popup_indizi);
+
+                // Nel caso fosse previsto un titolo questo sarebbe il codice da
+                // utilizzare eliminando quello visto poco sopra per evitarlo
+                //dialog.setTitle("Testo per il titolo");
+
+                MapsActivity.dialogIndizi.setCancelable(true);
+
+                // Qui potrei aggiungere eventuali altre impostazioni per la dialog
+                // ...
+
+                //Gestisco il bottone di chiusura della dialog (quello in alto a destra)
+                Button btnOk = (Button) MapsActivity.dialogIndizi.findViewById(R.id.popupIndiziBtnOk);
+                btnOk.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        MapsActivity.dialogIndizi.dismiss();
+                    }
+                });
+                // Faccio comparire la dialog
+                MapsActivity.dialogIndizi.show();
+            }
+        });
 
 
         startGame();
@@ -144,8 +184,8 @@ public class MapsActivity extends ActionBarActivity {
                     "drawable", this.getPackageName());
 
             NsMenuItemModel mItem = new NsMenuItemModel(id_title, id_icon);
-            if (res==1) mItem.counter=12; //it is just an example...
-            if (res==3) mItem.counter=3; //it is just an example...
+            if (res == 1) mItem.counter = 12; //it is just an example...
+            if (res == 3) mItem.counter = 3; //it is just an example...
             mAdapter.addItem(mItem);
             res++;
         }
@@ -159,6 +199,8 @@ public class MapsActivity extends ActionBarActivity {
         this.mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
     }
+
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -277,16 +319,60 @@ public class MapsActivity extends ActionBarActivity {
         Suggeritore.setText(R.string.scegliPinPartenza);
         //for (final Pin p: Utility.ZonaSanLorenzo.getPins_CurrentZone()){
         mMapViewer.getmMap().setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                @Override
-                public boolean onMarkerClick(Marker marker) {
-                    Toast.makeText(MapsActivity.this, marker.getId() , Toast.LENGTH_LONG).show();
-                    int markerId=((int) marker.getId().toString().charAt(1))-49;
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Toast.makeText(MapsActivity.this, marker.getId(), Toast.LENGTH_LONG).show();
+                int markerId = ((int) marker.getId().toString().charAt(1)) - 49;
+                if (gamePhase==GamePhase.PIN_CHOICE) {
                     (Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId].setObbiettivo();
-                    MapsActivity.mPinTarget=(Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId];
+                    MapsActivity.mPinTarget = (Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId];
                     mPinTarget.getPinMarker().icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-                    Toast.makeText(MapsActivity.this, "You have selected the Pin with id: "+(char)(markerId+48), Toast.LENGTH_LONG).show();
-                    return true;
+                    Toast.makeText(MapsActivity.this, "You have selected the Pin with id: " + (char) (markerId + 48), Toast.LENGTH_LONG).show();
+                    gamePhase=GamePhase.PIN_DISCOVER;
+                    setupPopupIndizi();
                 }
-            });
-        }
+                else if (gamePhase==GamePhase.PIN_DISCOVER){
+                    if (MapsActivity.mPinTarget != (Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId]) {
+                        //TODO: Immagine dialogo per confermare il cambio Pin Obiettivo: per ora non lo implementiamo
+                        Toast.makeText(MapsActivity.this, "You have selected the Pin with id: " +
+                                (char) (markerId + 48) + " but the target Pin was already selected", Toast.LENGTH_LONG).show();
+                    }
+                }
+                Toast.makeText(MapsActivity.this, "", Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
     }
+
+
+    public void setupPopupIndizi(){
+        MapsActivity.dialogIndizi= new Dialog(MapsActivity.this);
+
+        // Evito la presenza della barra del titolo nella mia dialog
+        MapsActivity.dialogIndizi.getWindow();
+        MapsActivity.dialogIndizi.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        // Carico il layout della dialog al suo intenro
+        MapsActivity.dialogIndizi.setContentView(R.layout.popup_indizi);
+
+        // Nel caso fosse previsto un titolo questo sarebbe il codice da
+        // utilizzare eliminando quello visto poco sopra per evitarlo
+        //dialog.setTitle("Testo per il titolo");
+
+        MapsActivity.dialogIndizi.setCancelable(true);
+
+        // Qui potrei aggiungere eventuali altre impostazioni per la dialog
+        // ...
+
+        //Gestisco il bottone di chiusura della dialog (quello in alto a destra)
+        Button btnOk = (Button) MapsActivity.dialogIndizi.findViewById(R.id.popupIndiziBtnOk);
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                MapsActivity.dialogIndizi.dismiss();
+            }
+        });
+        // Faccio comparire la dialog
+        MapsActivity.dialogIndizi.show();
+    }
+
+}
