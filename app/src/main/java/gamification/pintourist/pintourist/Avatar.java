@@ -1,7 +1,11 @@
 package gamification.pintourist.pintourist;
 
+import android.widget.Toast;
+
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
@@ -22,6 +26,28 @@ public class Avatar {
                 .draggable(true)
                 .title("My Position")
                 .snippet("My Position");
+
+        MapsActivity.getmMapViewer().getmMap().setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDragStart(Marker marker) {
+
+            }
+
+            @Override
+            public void onMarkerDrag(Marker marker) {
+                if (marker.equals(MapsActivity.mAvatar.getMarker())){
+                    Toast.makeText(MapsActivity.getAppContext(),"marker avatar == marker options avatar", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(MapsActivity.getAppContext(),"marker avatar != marker options avatar", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onMarkerDragEnd(Marker marker) {
+
+            }
+        });
     }
 
     public MarkerOptions getMarker(){
