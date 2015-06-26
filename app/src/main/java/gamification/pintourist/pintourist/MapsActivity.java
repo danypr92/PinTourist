@@ -326,6 +326,7 @@ public class MapsActivity extends FragmentActivity {
                     (Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId].setObbiettivo();
                     MapsActivity.mPinTarget = (Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId];
                     Utility.markers.get(markerId).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+                    //Utility.markers.get(markerId);
                     Toast.makeText(MapsActivity.this, "You have selected the Pin with id: " + (char) (markerId + 48), Toast.LENGTH_LONG).show();
                     gamePhase=GamePhase.PIN_DISCOVER;
                     setupPopupIndizi();
