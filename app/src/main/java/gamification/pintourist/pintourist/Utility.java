@@ -5,6 +5,7 @@ import android.content.res.Resources;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.PolygonOptions;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Utility {
     //Generics
     static final String Avatartitle="Avatar";
     static final int MIN_DSTANCE=20;
-
+    static ArrayList<Marker> markers=new ArrayList<Marker>();
 
     //Pin_______________________________________________________________________________________________________________________
     static final Context context = MapsActivity.getAppContext();

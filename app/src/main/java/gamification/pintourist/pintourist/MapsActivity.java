@@ -325,10 +325,7 @@ public class MapsActivity extends FragmentActivity {
                 if (gamePhase==GamePhase.PIN_CHOICE) {
                     (Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId].setObbiettivo();
                     MapsActivity.mPinTarget = (Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId];
-                    mPinTarget.getPinMarker().icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
-                    //getmMapViewer().mMap.
-                    //mMapViewer.
-                    mMapViewer.addMarker(getPinTarget().getPinMarker());
+                    Utility.markers.get(markerId).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
                     Toast.makeText(MapsActivity.this, "You have selected the Pin with id: " + (char) (markerId + 48), Toast.LENGTH_LONG).show();
                     gamePhase=GamePhase.PIN_DISCOVER;
                     setupPopupIndizi();
@@ -340,7 +337,7 @@ public class MapsActivity extends FragmentActivity {
                                 (char) (markerId + 48) + " but the target Pin was already selected", Toast.LENGTH_LONG).show();
                     }
                 }
-                Toast.makeText(MapsActivity.this, "", Toast.LENGTH_LONG).show();
+                //Toast.makeText(MapsActivity.this, "", Toast.LENGTH_LONG).show();
                 return true;
             }
         });
