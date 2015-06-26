@@ -15,7 +15,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
  */
 public class MapViewer {
 
-    private GoogleMap mMap;
+    public GoogleMap mMap;
     private Context context;
 
     public MapViewer(){
@@ -34,6 +34,7 @@ public class MapViewer {
                 //setUpMap();
             }
         }
+
     }
 
 
