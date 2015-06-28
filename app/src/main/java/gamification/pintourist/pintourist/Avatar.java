@@ -52,17 +52,7 @@ public class Avatar {
             @Override
             public void onMarkerDrag(Marker marker) {
                 if (marker.getTitle().equals(Utility.Avatartitle) && MapsActivity.getPinTarget() != null) {
-                    Location avatarLocation = new Location("gps");
-                    avatarLocation.setLatitude(marker.getPosition().latitude);
-                    avatarLocation.setLongitude(marker.getPosition().longitude);
 
-                    Location pinTargetLocation = new Location("gps");
-                    pinTargetLocation.setLatitude(MapsActivity.getPinTarget().getPinMarker().getPosition().latitude);
-                    pinTargetLocation.setLongitude(MapsActivity.getPinTarget().getPinMarker().getPosition().longitude);
-
-                    if (avatarLocation.distanceTo(pinTargetLocation) < Utility.MIN_DSTANCE) {
-                        Toast.makeText(MapsActivity.getAppContext(), avatarLocation.distanceTo(pinTargetLocation) + " Sei vicino al Pin Target!", Toast.LENGTH_SHORT).show();
-                    }
                 }
             }
 

@@ -127,33 +127,33 @@ public class MapsActivity extends FragmentActivity {
             @Override
             public void onClick(View v) {
                 // Inizializzo la mia dialog
-                MapsActivity.dialogIndizi = new Dialog(MapsActivity.this);
+        MapsActivity.dialogIndizi = new Dialog(MapsActivity.this);
 
-                // Evito la presenza della barra del titolo nella mia dialog
-                MapsActivity.dialogIndizi.getWindow();
-                MapsActivity.dialogIndizi.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // Evito la presenza della barra del titolo nella mia dialog
+        MapsActivity.dialogIndizi.getWindow();
+        MapsActivity.dialogIndizi.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-                // Carico il layout della dialog al suo intenro
-                MapsActivity.dialogIndizi.setContentView(R.layout.popup_indizi);
+        // Carico il layout della dialog al suo intenro
+        MapsActivity.dialogIndizi.setContentView(R.layout.popup_indizi);
 
-                // Nel caso fosse previsto un titolo questo sarebbe il codice da
-                // utilizzare eliminando quello visto poco sopra per evitarlo
-                //dialog.setTitle("Testo per il titolo");
+        // Nel caso fosse previsto un titolo questo sarebbe il codice da
+        // utilizzare eliminando quello visto poco sopra per evitarlo
+        //dialog.setTitle("Testo per il titolo");
 
-                MapsActivity.dialogIndizi.setCancelable(true);
+        MapsActivity.dialogIndizi.setCancelable(true);
 
-                // Qui potrei aggiungere eventuali altre impostazioni per la dialog
-                // ...
+        // Qui potrei aggiungere eventuali altre impostazioni per la dialog
+        // ...
 
-                //Gestisco il bottone di chiusura della dialog (quello in alto a destra)
-                Button btnOk = (Button) MapsActivity.dialogIndizi.findViewById(R.id.popupIndiziBtnOk);
-                btnOk.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        MapsActivity.dialogIndizi.dismiss();
-                    }
-                });
-                // Faccio comparire la dialog
-                MapsActivity.dialogIndizi.show();
+        //Gestisco il bottone di chiusura della dialog (quello in alto a destra)
+        Button btnOk = (Button) MapsActivity.dialogIndizi.findViewById(R.id.popupIndiziBtnOk);
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                    MapsActivity.dialogIndizi.dismiss();
+                }
+            });
+            // Faccio comparire la dialog
+            MapsActivity.dialogIndizi.show();
             }
         });
 
