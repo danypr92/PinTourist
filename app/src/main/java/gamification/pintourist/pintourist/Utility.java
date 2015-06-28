@@ -22,6 +22,7 @@ public class Utility {
     static final String Avatartitle="Avatar";
     static final int MIN_DSTANCE=20;
     static ArrayList<Marker> markers=new ArrayList<Marker>();
+    static Marker avatarMarker;
 
     //Pin_______________________________________________________________________________________________________________________
     static final Context context = MapsActivity.getAppContext();

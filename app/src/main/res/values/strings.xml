@@ -15,8 +15,12 @@
 
     <!--  Stringhe del Suggeritore -->
     <string name="scegliPinPartenza">Scegli il Pin di partenza.</string>
+    <string name="arrivaAlPin">Arriva al Pin che hai scelto.</string>
+    <string name="menuPrincipaleOpened">Menu principale</string>
 
-<!--Stringhe per il menu-->
+
+
+    <!--Stringhe per il menu-->
     <string name="action_settings">Settings</string>
     <string name="action_save">Save</string>
     <string name="hello_world">Hello world!</string>

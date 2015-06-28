@@ -66,12 +66,13 @@ public class MapsActivity extends FragmentActivity {
     public static GamePhase gamePhase=GamePhase.PIN_CHOICE;
 
 
-
+    //Elementi interfaccia
     private ListView mDrawerList;
     private DrawerLayout mDrawer;
     private CustomActionBarDrawerToggle mDrawerToggle;
     private String[] menuItems;
     public static Dialog dialogIndizi;
+    public static TextView Suggeritore;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,7 +104,7 @@ public class MapsActivity extends FragmentActivity {
         setSupportActionBar(toolbar);
 
         */
-
+        MapsActivity.Suggeritore=(TextView) findViewById(R.id.suggeritore);
         // initialising the object of the FragmentManager. Here I'm passing getSupportFragmentManager().
         // You can pass getFragmentManager() if you are coding for Android 3.0 or above.
         fragmentManager = getSupportFragmentManager();
@@ -115,7 +116,7 @@ public class MapsActivity extends FragmentActivity {
         //mMarkers = mParser.parse();
         //setUpMapIfNeeded();
         mMapViewer.setUpMapIfNeeded();
-        mMapViewer.addMarker(mAvatar.getMarker());
+        Utility.avatarMarker= mMapViewer.getmMap().addMarker(mAvatar.getMarker());
         mMapViewer.moveCameraTo(mAvatar.getLatLng(), 30);
 
         Utility.ZonaRioneMonti.draw();
@@ -127,33 +128,33 @@ public class MapsActivity extends FragmentActivity {
             @Override
             public void onClick(View v) {
                 // Inizializzo la mia dialog
-        MapsActivity.dialogIndizi = new Dialog(MapsActivity.this);
+                MapsActivity.dialogIndizi = new Dialog(MapsActivity.this);
 
-        // Evito la presenza della barra del titolo nella mia dialog
-        MapsActivity.dialogIndizi.getWindow();
-        MapsActivity.dialogIndizi.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                // Evito la presenza della barra del titolo nella mia dialog
+                MapsActivity.dialogIndizi.getWindow();
+                MapsActivity.dialogIndizi.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        // Carico il layout della dialog al suo intenro
-        MapsActivity.dialogIndizi.setContentView(R.layout.popup_indizi);
+                // Carico il layout della dialog al suo intenro
+                MapsActivity.dialogIndizi.setContentView(R.layout.popup_indizi);
 
-        // Nel caso fosse previsto un titolo questo sarebbe il codice da
-        // utilizzare eliminando quello visto poco sopra per evitarlo
-        //dialog.setTitle("Testo per il titolo");
+                // Nel caso fosse previsto un titolo questo sarebbe il codice da
+                // utilizzare eliminando quello visto poco sopra per evitarlo
+                //dialog.setTitle("Testo per il titolo");
 
-        MapsActivity.dialogIndizi.setCancelable(true);
+                MapsActivity.dialogIndizi.setCancelable(true);
 
-        // Qui potrei aggiungere eventuali altre impostazioni per la dialog
-        // ...
+                // Qui potrei aggiungere eventuali altre impostazioni per la dialog
+                // ...
 
-        //Gestisco il bottone di chiusura della dialog (quello in alto a destra)
-        Button btnOk = (Button) MapsActivity.dialogIndizi.findViewById(R.id.popupIndiziBtnOk);
-        btnOk.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                    MapsActivity.dialogIndizi.dismiss();
-                }
-            });
-            // Faccio comparire la dialog
-            MapsActivity.dialogIndizi.show();
+                //Gestisco il bottone di chiusura della dialog (quello in alto a destra)
+                Button btnOk = (Button) MapsActivity.dialogIndizi.findViewById(R.id.popupIndiziBtnOk);
+                btnOk.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        MapsActivity.dialogIndizi.dismiss();
+                    }
+                });
+                // Faccio comparire la dialog
+                MapsActivity.dialogIndizi.show();
             }
         });
 
@@ -314,7 +315,6 @@ public class MapsActivity extends FragmentActivity {
     public static MapViewer getmMapViewer() {return mMapViewer;}
 
     public void startGame(){
-        TextView Suggeritore=(TextView) findViewById(R.id.suggeritore);
         Suggeritore.setText(R.string.scegliPinPartenza);
         //for (final Pin p: Utility.ZonaSanLorenzo.getPins_CurrentZone()){
         mMapViewer.getmMap().setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
@@ -328,6 +328,7 @@ public class MapsActivity extends FragmentActivity {
                     Utility.markers.get(markerId).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
                     //Utility.markers.get(markerId);
                     Toast.makeText(MapsActivity.this, "You have selected the Pin with id: " + (char) (markerId + 48), Toast.LENGTH_LONG).show();
+                    Suggeritore.setText(R.string.arrivaAlPin);
                     gamePhase=GamePhase.PIN_DISCOVER;
                     setupPopupIndizi();
                 }
@@ -336,6 +337,11 @@ public class MapsActivity extends FragmentActivity {
                         //TODO: Immagine dialogo per confermare il cambio Pin Obiettivo: per ora non lo implementiamo
                         Toast.makeText(MapsActivity.this, "You have selected the Pin with id: " +
                                 (char) (markerId + 48) + " but the target Pin was already selected", Toast.LENGTH_LONG).show();
+                    }
+                    else{ //Pin Target == Pin premuto:
+                        if (MapsActivity.mPinTarget.isIlluminato()){ //Sei vicino?
+
+                        }
                     }
                 }
                 //Toast.makeText(MapsActivity.this, "", Toast.LENGTH_LONG).show();

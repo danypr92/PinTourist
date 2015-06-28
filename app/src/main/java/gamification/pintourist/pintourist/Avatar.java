@@ -29,7 +29,6 @@ public class Avatar {
                 .draggable(true)
                 .title(Utility.Avatartitle)
                 .snippet("My Position");
-
         Location avatarLocation = new Location("gps");
         avatarLocation.setLatitude(mMarker.getPosition().latitude);
         avatarLocation.setLongitude(mMarker.getPosition().longitude);
@@ -63,6 +62,7 @@ public class Avatar {
                             */
             @Override
             public void onMarkerDragEnd(Marker marker) {
+                /*
                 if (marker.getTitle().equals(Utility.Avatartitle) && MapsActivity.getPinTarget() != null) {
                     //Toast.makeText(MapsActivity.getAppContext(),"marker avatar == marker options avatar", Toast.LENGTH_LONG).show();
                     Location avatarLocation = new Location("gps");
@@ -75,10 +75,12 @@ public class Avatar {
                     Toast.makeText(MapsActivity.getAppContext(), String.valueOf(avatarLocation.distanceTo(pinTargetLocation)), Toast.LENGTH_SHORT).show();
                     if (avatarLocation.distanceTo(pinTargetLocation) < Utility.MIN_DSTANCE) {
                         Toast.makeText(MapsActivity.getAppContext(), avatarLocation.distanceTo(pinTargetLocation) + " Sei vicino al Pin Target!", Toast.LENGTH_SHORT).show();
-                    } else {
                     }
+                    else {
+                    }
+                    */
                 }
-            }
+
         });
     }
 
