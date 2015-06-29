@@ -2,7 +2,16 @@
 <resources>
     <dimen name="toolbar_height">45dp</dimen>
         <!-- Default screen margins, per the Android Design guidelines. -->
-        <dimen name="activity_horizontal_margin">16dp</dimen>
-        <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!--dimensioni popupIndizi-->
+    <dimen name="image_popup_indizi_width">100dp</dimen>
+    <dimen name="image_popup_indizi_height">100dp</dimen>
+    <dimen name="popup_indizi_width">300dp</dimen>
+    <dimen name="popup_indizi_height">200dp</dimen>
+
+    <!--dimensioni popupSfida-->
+    <dimen name="popup_sfida_width">400dp</dimen>
+    <dimen name="popup_sfida_height">200dp</dimen>
 </resources>

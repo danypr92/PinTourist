@@ -104,9 +104,7 @@ public class Pin {
             Location pinTargetLocation = new Location("gps");
             pinTargetLocation.setLatitude(MapsActivity.getPinTarget().getPinMarker().getPosition().latitude);
             pinTargetLocation.setLongitude(MapsActivity.getPinTarget().getPinMarker().getPosition().longitude);
-            Toast.makeText(MapsActivity.getAppContext(), String.valueOf(avatarLocation.distanceTo(pinTargetLocation)), Toast.LENGTH_SHORT).show();
             if (avatarLocation.distanceTo(pinTargetLocation) < Utility.MIN_DSTANCE) {
-                Toast.makeText(MapsActivity.getAppContext(),"Illuminato", Toast.LENGTH_LONG).show();
                 return true;
             }
             else return false;

@@ -1,36 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <TableLayout
-        android:layout_width="wrap_content"
+    android:layout_width="@dimen/popup_sfida_width"
+    android:layout_height="@dimen/popup_sfida_height"
+    android:background="#15EE44">
+
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container"
+    android:layout_margin="10dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Sfida zona San Lorenzo Pin 3"
+            android:id="@+id/popupSfidaPrimaSchermataTitolo"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="\nHai ottenuto una nuova sfida!"
+            android:id="@+id/popupSfidaPrimaSchermataMessaggio"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Avanti"
+                android:layout_marginTop="20dp"
+                android:id="@+id/popupSfidaPrimaSchermataBtnAvanti"
+                android:layout_gravity="center_horizontal"
+                />
+
+    </LinearLayout>
+</TableLayout>
+</RelativeLayout>
+
+
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/popup_indizi_width"
+    android:layout_height="@dimen/popup_indizi_height">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/container"
         android:background="#15EE44"
-    >
-    <TableRow
+        >
+        <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-             >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Sfida zona San Lorenzo Pin 3"
-        android:id="@+id/popupIndiziTitolo"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-        </TableRow>
-        <TableRow>
-            <LinearLayout
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_span="2">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Avanti"
-                    android:id="@+id/popupIndiziBtnOk"/>
-            </LinearLayout>
+                android:text="Sfida zona San Lorenzo Pin 3"
+                android:id="@+id/popupSfidaPrimaSchermataTitolo"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Avanti"
+                android:id="@+id/popupSfidaPrimaSchermataBtnAvanti"
+                android:layout_column="0" />
         </TableRow>
     </TableLayout>
 </RelativeLayout>
+-->

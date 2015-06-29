@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="@dimen/popup_indizi_width"
+    android:layout_height="@dimen/popup_indizi_height"
+    android:background="#15EE44">
     <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/container"
-        android:background="#15EE44"
+        android:layout_margin="10dp"
     >
-        <TableRow
+    <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
              >
@@ -25,8 +26,8 @@
         </TableRow>
         <TableRow>
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/image_popup_indizi_width"
+                android:layout_height="@dimen/image_popup_indizi_height"
                 android:layout_below="@+id/popupIndiziTitolo"
                 android:id="@+id/popupIndiziImmagine"
                 android:src="@drawable/pin_icon"/>
@@ -37,10 +38,15 @@
                 android:id="@+id/popupIndizioDescrizione"
                 />
         </TableRow>
-        <TableRow>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
             <LinearLayout
+                android:paddingTop="20dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_span="2">
+                android:layout_span="2"
+                >
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

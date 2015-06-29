@@ -67,12 +67,20 @@ public class MapsActivity extends FragmentActivity {
 
 
     //Elementi interfaccia
+    //Menu laterale
     private ListView mDrawerList;
     private DrawerLayout mDrawer;
     private CustomActionBarDrawerToggle mDrawerToggle;
     private String[] menuItems;
+    //Dialog per i popup
     public static Dialog dialogIndizi;
+    public static Dialog dialogSfida;
+
+    //Suggeritore
     public static TextView Suggeritore;
+
+//INIZIO METODI ACTIVITY
+// _______________________________________________________________________________________________
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,27 +90,17 @@ public class MapsActivity extends FragmentActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_map);
 
-
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
-        //getActionBar().setHomeButtonEnabled(true);
-
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         // set a custom shadow that overlays the main content when the drawer
         // opens
         mDrawer.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-
         _initMenu();
         mDrawerToggle = new CustomActionBarDrawerToggle(this, mDrawer);
         mDrawer.setDrawerListener(mDrawerToggle);
-
-
         /*
-
         // Set a toolbar to replace the action bar.
         this.toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         */
         MapsActivity.Suggeritore=(TextView) findViewById(R.id.suggeritore);
         // initialising the object of the FragmentManager. Here I'm passing getSupportFragmentManager().
@@ -127,80 +125,13 @@ public class MapsActivity extends FragmentActivity {
         bottoneIndizi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Inizializzo la mia dialog
-                MapsActivity.dialogIndizi = new Dialog(MapsActivity.this);
-
-                // Evito la presenza della barra del titolo nella mia dialog
-                MapsActivity.dialogIndizi.getWindow();
-                MapsActivity.dialogIndizi.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-                // Carico il layout della dialog al suo intenro
-                MapsActivity.dialogIndizi.setContentView(R.layout.popup_indizi);
-
-                // Nel caso fosse previsto un titolo questo sarebbe il codice da
-                // utilizzare eliminando quello visto poco sopra per evitarlo
-                //dialog.setTitle("Testo per il titolo");
-
-                MapsActivity.dialogIndizi.setCancelable(true);
-
-                // Qui potrei aggiungere eventuali altre impostazioni per la dialog
-                // ...
-
-                //Gestisco il bottone di chiusura della dialog (quello in alto a destra)
-                Button btnOk = (Button) MapsActivity.dialogIndizi.findViewById(R.id.popupIndiziBtnOk);
-                btnOk.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        MapsActivity.dialogIndizi.dismiss();
-                    }
-                });
-                // Faccio comparire la dialog
-                MapsActivity.dialogIndizi.show();
+                setupPopupIndizi();
             }
         });
 
 
         startGame();
     }
-
-    private void _initMenu() {
-        NsMenuAdapter mAdapter = new NsMenuAdapter(this);
-
-        // Add Header
-        mAdapter.addHeader(R.string.ns_menu_main_header);
-
-        // Add first block
-
-        menuItems = getResources().getStringArray(
-                R.array.ns_menu_items);
-        String[] menuItemsIcon = getResources().getStringArray(
-                R.array.ns_menu_items_icon);
-
-        int res = 0;
-        for (String item : menuItems) {
-
-            int id_title = getResources().getIdentifier(item, "string",
-                    this.getPackageName());
-            int id_icon = getResources().getIdentifier(menuItemsIcon[res],
-                    "drawable", this.getPackageName());
-
-            NsMenuItemModel mItem = new NsMenuItemModel(id_title, id_icon);
-            if (res == 1) mItem.counter = 12; //it is just an example...
-            if (res == 3) mItem.counter = 3; //it is just an example...
-            mAdapter.addItem(mItem);
-            res++;
-        }
-
-        mAdapter.addHeader(R.string.ns_menu_main_header2);
-
-        this.mDrawerList = (ListView) findViewById(R.id.drawer);
-        if (this.mDrawerList != null)
-            this.mDrawerList.setAdapter(mAdapter);
-
-        this.mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-
-    }
-
-
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -243,6 +174,56 @@ public class MapsActivity extends FragmentActivity {
 
         // Handle your other action bar items...
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //mLocationListener.update();
+        //setUpMapIfNeeded();
+        mMapViewer.setUpMapIfNeeded();
+    }
+
+// FINE METODI ACTIVITY
+// _______________________________________________________________________________________________
+//INIZIO ELEMENTI PER IL MENU LATERALE
+
+    private void _initMenu() {
+        NsMenuAdapter mAdapter = new NsMenuAdapter(this);
+
+        // Add Header
+        mAdapter.addHeader(R.string.ns_menu_main_header);
+
+        // Add first block
+
+        menuItems = getResources().getStringArray(
+                R.array.ns_menu_items);
+        String[] menuItemsIcon = getResources().getStringArray(
+                R.array.ns_menu_items_icon);
+
+        int res = 0;
+        for (String item : menuItems) {
+
+            int id_title = getResources().getIdentifier(item, "string",
+                    this.getPackageName());
+            int id_icon = getResources().getIdentifier(menuItemsIcon[res],
+                    "drawable", this.getPackageName());
+
+            NsMenuItemModel mItem = new NsMenuItemModel(id_title, id_icon);
+            if (res == 1) mItem.counter = 12; //it is just an example...
+            if (res == 3) mItem.counter = 3; //it is just an example...
+            mAdapter.addItem(mItem);
+            res++;
+        }
+
+        mAdapter.addHeader(R.string.ns_menu_main_header2);
+
+        this.mDrawerList = (ListView) findViewById(R.id.drawer);
+        if (this.mDrawerList != null)
+            this.mDrawerList.setAdapter(mAdapter);
+
+        this.mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+
     }
 
     private class CustomActionBarDrawerToggle extends ActionBarDrawerToggle {
@@ -290,15 +271,9 @@ public class MapsActivity extends FragmentActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //mLocationListener.update();
-        //setUpMapIfNeeded();
-        mMapViewer.setUpMapIfNeeded();
-    }
-
-
+//FINE ELEMENTI PER IL MENU LATERALE
+// _______________________________________________________________________________________________
+//NOSTRI METODI
 
     public static Context getAppContext(){
         return  context;
@@ -320,8 +295,10 @@ public class MapsActivity extends FragmentActivity {
         mMapViewer.getmMap().setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
+                //trovo l'id del marker premuto per risalire al Pin
                 Toast.makeText(MapsActivity.this, marker.getId(), Toast.LENGTH_LONG).show();
                 int markerId = ((int) marker.getId().toString().charAt(1)) - 49;
+
                 if (gamePhase==GamePhase.PIN_CHOICE) {
                     (Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId].setObbiettivo();
                     MapsActivity.mPinTarget = (Utility.ZonaSanLorenzo.getPins_CurrentZone())[markerId];
@@ -340,7 +317,7 @@ public class MapsActivity extends FragmentActivity {
                     }
                     else{ //Pin Target == Pin premuto:
                         if (MapsActivity.mPinTarget.isIlluminato()){ //Sei vicino?
-
+                            setupPopupSfidaPrimaSchermata();
                         }
                     }
                 }
@@ -351,6 +328,9 @@ public class MapsActivity extends FragmentActivity {
     }
 
 
+
+    //_________________________________________________________
+    //setup dei popup (che fa pure rima :D )
     public void setupPopupIndizi(){
         MapsActivity.dialogIndizi= new Dialog(MapsActivity.this);
 
@@ -375,10 +355,67 @@ public class MapsActivity extends FragmentActivity {
         btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 MapsActivity.dialogIndizi.dismiss();
+
             }
         });
         // Faccio comparire la dialog
         MapsActivity.dialogIndizi.show();
+    }
+
+    public void setupPopupSfidaPrimaSchermata(){
+        MapsActivity.dialogSfida= new Dialog(MapsActivity.this);
+
+        // Evito la presenza della barra del titolo nella mia dialog
+        MapsActivity.dialogSfida.getWindow();
+        MapsActivity.dialogSfida.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        // Carico il layout della dialog al suo intenro
+        MapsActivity.dialogSfida.setContentView(R.layout.popup_sfida_prima_schermata);
+
+        // Nel caso fosse previsto un titolo questo sarebbe il codice da
+        // utilizzare eliminando quello visto poco sopra per evitarlo
+        //dialog.setTitle("Testo per il titolo");
+
+        MapsActivity.dialogSfida.setCancelable(true);
+
+        // Qui potrei aggiungere eventuali altre impostazioni per la dialog
+        // ...
+
+        //Gestisco il bottone di chiusura della dialog (quello in alto a destra)
+        Button btnOk = (Button) MapsActivity.dialogSfida.findViewById(R.id.popupSfidaPrimaSchermataBtnAvanti);
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                MapsActivity.dialogSfida.dismiss();
+                setupPopupSfida();
+            }
+        });
+        // Faccio comparire la dialog
+        MapsActivity.dialogSfida.show();
+    }
+
+    public void setupPopupSfida(){
+        MapsActivity.dialogSfida= new Dialog(MapsActivity.this);
+
+        // Evito la presenza della barra del titolo nella mia dialog
+        MapsActivity.dialogSfida.getWindow();
+        MapsActivity.dialogSfida.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        // Carico il layout della dialog al suo intenro
+        MapsActivity.dialogSfida.setContentView(R.layout.popup_sfida
+        );
+
+        // Nel caso fosse previsto un titolo questo sarebbe il codice da
+        // utilizzare eliminando quello visto poco sopra per evitarlo
+        //dialog.setTitle("Testo per il titolo");
+        MapsActivity.dialogSfida.setCancelable(true);
+
+        // Qui potrei aggiungere eventuali altre impostazioni per la dialog
+        // ...
+
+        //Gestisco il bottone di chiusura della dialog (quello in alto a destra)
+
+        // Faccio comparire la dialog
+        MapsActivity.dialogSfida.show();
     }
 
 }
