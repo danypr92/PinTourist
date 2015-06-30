@@ -57,7 +57,7 @@ public class Avatar {
             @Override
             public void onMarkerDragEnd(Marker marker) {
                 onMarkerDrag(marker);
-                if (MapsActivity.getPinTarget().isIlluminato())
+                if (MapsActivity.getPinTarget()!=null && MapsActivity.getPinTarget().isIlluminato())
                     Toast.makeText(MapsActivity.getAppContext(),"Illuminato", Toast.LENGTH_LONG).show();
                 }
 
