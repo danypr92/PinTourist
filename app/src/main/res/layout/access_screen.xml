@@ -6,11 +6,13 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="114dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Access"
         android:onClick="access"
         android:layout_marginTop="120dp" />
 
-</LinearLayout>
+
+
+    </LinearLayout>

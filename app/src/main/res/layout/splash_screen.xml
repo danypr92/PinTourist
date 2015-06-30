@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:backgroundTint="@color/white"
+    android:background="@color/white"
     android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
 
     tools:context=".SplashScreenActivity"
     >
+
+    <ImageView
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:src="@drawable/closseo_blur"
+        android:id="@drawable/closseo_blur"
+        android:layout_gravity="center"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="false" />
+
     <ImageView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
@@ -16,4 +27,4 @@
         android:id="@+id/pinlogo"
         android:layout_margin="75dp" />
 
-</RelativeLayout>
+</FrameLayout>
