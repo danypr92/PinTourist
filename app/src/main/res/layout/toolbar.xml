@@ -29,23 +29,24 @@
             android:textAlignment="center" />
 
         <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="15"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:maxWidth="50dp"
             android:id="@+id/bottoneIndizi"
-            android:src="@drawable/search_ideogram"
+            android:src="@drawable/indizi"
             android:scaleType="fitCenter"
-            />
+            android:background="#00ffffff"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
         <ImageButton
-            android:layout_width="0dp"
+            android:layout_width="79dp"
             android:layout_height="wrap_content"
-            android:layout_weight="15"
             android:maxWidth="50dp"
             android:id="@+id/bottoneMenuPrincipale"
-            android:src="@drawable/search_ideogram"
+            android:src="@drawable/menu"
             android:scaleType="fitCenter"
-            />
+            android:background="#00ffffff"
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
 </android.support.v7.widget.Toolbar>
