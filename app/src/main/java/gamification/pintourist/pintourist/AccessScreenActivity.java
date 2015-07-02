@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -31,8 +33,30 @@ public class AccessScreenActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+
+
+
+
+
+
+
+
+
         setContentView(R.layout.access_screen);
-        Button b= (Button) findViewById(R.id.button);
+        //Button b= (Button) findViewById(R.id.button);
+
+
+
+
+
+        //From here copied
+        ImageButton start = (ImageButton) findViewById(R.id.start);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               access(v);
+            }
+        });
     }
 
     public void access(View view) {

@@ -34,13 +34,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AccessScreenActivity"
-            android:label="@string/title_activity_access">
+        <activity
+            android:name=".AccessScreenActivity"
+            android:label="@string/title_activity_access" >
+        </activity>
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps" >
+
         </activity>
 
-        <activity android:name=".MapsActivity"
-            android:label="@string/title_activity_maps">
-        </activity>
     </application>
 
 </manifest>

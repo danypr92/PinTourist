@@ -1,18 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:background="@color/white"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="114dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Access"
-        android:onClick="access"
-        android:layout_marginTop="120dp" />
+    tools:context=".SplashScreenActivity"
+    >
 
+    <ImageView
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:src="@drawable/closseo_blur"
+        android:id="@drawable/closseo_blur"
+        android:layout_gravity="center"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="false" />
 
+    <ImageView
+        android:layout_height="129dp"
+        android:layout_width="360dp"
+        android:src="@drawable/pinlogo"
+        android:id="@+id/pinlogo"
+        android:layout_gravity="center_horizontal|top" />
 
-    </LinearLayout>
+    <ImageButton
+        android:layout_width="137dp"
+        android:layout_height="133dp"
+        android:src="@drawable/tutorial"
+        android:id="@+id/tutorial"
+        android:layout_gravity="right|bottom"
+        android:backgroundTint="#00ffffff"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="false"
+        android:clickable="true"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="40dp"
+        style="?android:borderlessButtonStyle"/>
+
+    <ImageButton
+        android:layout_width="139dp"
+        android:layout_height="137dp"
+        android:src="@drawable/start"
+        android:id="@+id/start"
+        android:layout_gravity="left|bottom"
+        android:backgroundTint="#0043ffd9"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="false"
+        android:clickable="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="100dp"
+        android:focusable="false"
+        style="?android:borderlessButtonStyle"/>
+
+</FrameLayout>
