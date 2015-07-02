@@ -17,6 +17,7 @@ Resources.getSystem()
 /**
  * Created by Roberto on 19/06/15.
  */
+/*
 public class Utility {
     //Generics
     static final String Avatartitle="Avatar";
@@ -90,7 +91,7 @@ public class Utility {
      */
 
     //Elementi Zona Rione Monti (id 0)
-
+/*
     static final LatLng[] verticiZonaRioneMonti= {
             new LatLng(41.89534541412743, 12.483129501342773),
             new LatLng(41.89601624960714, 12.486777305603027),
@@ -188,3 +189,4 @@ public class Utility {
 
 
 }
+*/

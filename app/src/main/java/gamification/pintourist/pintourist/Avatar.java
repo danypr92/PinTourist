@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Created by Daniel on 04/06/2015.
  */
-
+/*
 public class Avatar {
 
     private static MarkerOptions mMarker;
@@ -44,12 +44,12 @@ public class Avatar {
             public void onMarkerDrag(Marker marker) {
                 if (marker.getTitle().equals(Utility.Avatartitle) && MapsActivity.getPinTarget() != null) {
                     if (MapsActivity.getPinTarget().isIlluminato()) {
-                        if (!MapsActivity.Suggeritore.getText().toString().equals(R.string.cliccaSulPinIlluminato))
-                            MapsActivity.Suggeritore.setText(R.string.cliccaSulPinIlluminato);
+                        if (!MapsActivity.suggeritore.getText().toString().equals(R.string.cliccaSulPinIlluminato))
+                            MapsActivity.suggeritore.setText(R.string.cliccaSulPinIlluminato);
                         //avvia animazione
                     } else {
-                        if (!MapsActivity.Suggeritore.getText().toString().equals(R.string.arrivaAlPin))
-                            MapsActivity.Suggeritore.setText(R.string.arrivaAlPin);
+                        if (!MapsActivity.suggeritore.getText().toString().equals(R.string.arrivaAlPin))
+                            MapsActivity.suggeritore.setText(R.string.arrivaAlPin);
                     }
                 }
             }
@@ -79,7 +79,7 @@ public class Avatar {
 
 //Toast.makeText(MapsActivity.getAppContext(), avatarLocation.distanceTo(pinTargetLocation) + " Sei vicino al Pin Target!", Toast.LENGTH_SHORT).show();
 //Toast.makeText(MapsActivity.getAppContext(),"marker avatar != marker options avatar", Toast.LENGTH_LONG).show();
-                /*
+
                 if (marker.getTitle().equals(Utility.Avatartitle) && MapsActivity.getPinTarget() != null) {
                     //Toast.makeText(MapsActivity.getAppContext(),"marker avatar == marker options avatar", Toast.LENGTH_LONG).show();
                     Location avatarLocation = new Location("gps");

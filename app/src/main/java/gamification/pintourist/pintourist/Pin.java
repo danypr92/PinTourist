@@ -22,7 +22,7 @@ import java.util.Random;
 
 /**
  * Created by Daniel on 04/06/2015.
- */
+
 public class Pin {
 
     public static final int NUMERO_DOMANDE = 3;
@@ -112,3 +112,4 @@ public class Pin {
         return false;
     }
 }
+ */

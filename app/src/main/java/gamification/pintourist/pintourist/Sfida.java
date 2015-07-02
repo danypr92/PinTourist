@@ -4,7 +4,7 @@ import android.media.Image;
 
 /**
  * Created by Marco on 11/06/2015.
- */
+
 public class Sfida {
 
     private Image immagineSfida;
@@ -42,3 +42,4 @@ public class Sfida {
 }
 
 }
+ */

@@ -1,5 +1,9 @@
 package gamification.pintourist.pintourist;
 
+/**
+ * Created by Marco on 02/07/2015.
+ */
+
 import android.content.Context;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -7,8 +11,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Marker;
+
 
 /**
  * Created by Daniel on 01/06/2015.
@@ -38,7 +43,7 @@ public class MapViewer {
     }
 
 
-   /* public void setUpMap() {
+   /*public void setUpMap() {
         mMap.addMarker(new MarkerOptions().position(new LatLng(MapsActivity.getMyLocation().getLatitude(), MapsActivity.getMyLocation().getLongitude())).title("Marker"));
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(new LatLng(MapsActivity.getMyLocation().getLatitude(), MapsActivity.getMyLocation().getLongitude()))      // Sets the center of the map to mi position
@@ -52,15 +57,15 @@ public class MapViewer {
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(nPos)      // Sets the center of the map to mi position
                 .zoom(nZoom)                   // Sets the zoom
-                .bearing(90)                // Sets the orientation of the camera to east
+                .bearing(0)                // Sets the orientation of the camera to east
                 .build();                   // Creates a CameraPosition from the builder
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 
 
-    public void addMarker(MarkerOptions newMarker){
-        mMap.addMarker(newMarker);
-    }
+    //public void addMarker(MarkerOptions newMarker){
+    //   mMap.addMarker(newMarker);
+    //}
 
 
 
